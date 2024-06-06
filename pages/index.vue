@@ -1,5 +1,5 @@
 <template>
-	<div class="px-lg-16 mx-lg-16 px-md-8 mx-md-8">
+	<div class="px-lg-16 mx-lg-16">
 		<main>
 			<HomeList></HomeList>
 		</main>
@@ -10,17 +10,18 @@
 </template>
 
 <script lang="ts" setup>
+// TODO
 useSeoMeta({
-	ogTitle: "UseSora",
-	ogDescription: `Collecting the highest quality prompts for Sora, providing creators, researchers, and technology enthusiasts with a tool for sharing, exploring, and discovering the latest Sora video creations.`,
-	ogImage: "https://usesora.app/logobg.png'",
+	ogTitle: "Weekly0 - 优质周刊集合",
+	ogDescription: `收刮互联网上的奇迹...`,
+	ogImage: "https://weekly0.com/logobg.png'",
 	twitterCard: "summary",
 });
 </script>
 
 <style lang="scss" scoped>
 main {
-	min-width: 888px;
+	min-width: 1115px;
 	min-height: calc(100vh - 60px);
 }
 </style>

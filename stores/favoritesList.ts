@@ -1,11 +1,15 @@
   import { defineStore } from 'pinia'
 
 interface IFavoritesListItem {
-  prompt: string;
-  author: string;
-  homepage: string;
-  video: string;
-  publish: string;
+	title: string;
+  tags: string[];
+	logo: string;
+	author: string;
+	authorLink: string;
+	description: string;
+	rss: string;
+	webSite: string;
+	isFree: boolean;
 }
 
 export const useMyFavoritesListStore = defineStore({
@@ -15,7 +19,7 @@ export const useMyFavoritesListStore = defineStore({
   }),
   actions: {
     addFavorite(item: IFavoritesListItem) {
-      const index = this.favoritesList.findIndex((i) => i.prompt === item.prompt)
+      const index = this.favoritesList.findIndex((i) => i.webSite === item.webSite)
       if (index === -1) {
         this.favoritesList.push(item)
         return true;
@@ -23,7 +27,7 @@ export const useMyFavoritesListStore = defineStore({
       else return false;
     },
     removeFavorite(item: IFavoritesListItem) {
-      const index = this.favoritesList.findIndex((i) => i.prompt === item.prompt)
+      const index = this.favoritesList.findIndex((i) => i.webSite === item.webSite)
       if (index !== -1) {
         this.favoritesList.splice(index, 1)
       }

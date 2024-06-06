@@ -4,7 +4,7 @@
 			<template v-slot:text>
 				<v-text-field
 					v-model="search"
-					label="Search for high-quality prompts"
+					label="收刮中文互联网上的奇迹..."
 					prepend-inner-icon="mdi-magnify"
 					single-line
 					variant="outlined"
@@ -12,14 +12,14 @@
 					hide-details
 				></v-text-field>
 				<div class="d-flex justify-center flex-wrap">
-					<span v-for="word in topWords" class="mx-1 mt-2" :key="word">
+					<span v-for="tag in topTags" class="mx-1 mt-2" :key="tag">
 						<v-btn
 							class="text-capitalize"
 							size="small"
 							variant="tonal"
-							@click="search = word"
+							@click="search = tag"
 						>
-							{{ word }}
+							{{ tag }}
 						</v-btn>
 					</span>
 				</div>
@@ -32,38 +32,59 @@
 				:loading="pending"
 				:items-per-page="10"
 				:items-per-page-options="[5, 10, 20]"
-				item-value="prompt"
-				loading-text="Loading... Please wait"
+				item-value="description"
+				loading-text="加载中... 请稍等"
 				@update:page="backToTop"
 			>
-				<template v-slot:item.prompt="{ item }">
-					<div>
-						{{ item.prompt }}
-					</div>
+				<template v-slot:item.logo="{ item }">
+					<v-avatar :image="item.logo" rounded="sm"></v-avatar>
 				</template>
-				<template v-slot:item.homepage="{ item }">
+				<template v-slot:item.tags="{ item }">
+					<v-chip size="small" class="mr-1 mb-1" v-for="tag in item.tags">
+						{{ tag }}
+					</v-chip>
+				</template>
+				<template v-slot:item.author="{ item }">
 					<v-btn
 						class="text-capitalize"
 						color="primary"
 						variant="text"
-						:href="item.homepage"
+						:href="item.authorLink"
 						target="_blank"
 					>
-						Go to Page
+						@{{ item.author }}
 					</v-btn>
 				</template>
-				<template v-slot:item.video="{ item }">
-					<v-card class="my-2" elevation="2" rounded>
-						<iframe
-							width="192"
-							height="108"
-							:src="item.video"
-							title="YouTube video player"
-							frameborder="0"
-							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-							allowfullscreen
-						></iframe>
-					</v-card>
+				<template v-slot:item.description="{ item }">
+					<div style="min-width: 200px" class="three-line-ellipsis">
+						{{ item.description }}
+					</div>
+				</template>
+				<template v-slot:item.rss="{ item }">
+					<v-btn
+						color="primary"
+						:disabled="!item.rss"
+						variant="text"
+						@click="copy(item.rss)"
+					>
+						点击复制
+					</v-btn>
+				</template>
+				<template v-slot:item.webSite="{ item }">
+					<v-btn
+						class="text-lowercase"
+						color="primary"
+						variant="text"
+						:href="item.webSite"
+						target="_blank"
+					>
+						{{ item.webSite.match(/:\/\/(.[^/]+)/)[1].replace(/^(www\.)/, "") }}
+					</v-btn>
+				</template>
+				<template v-slot:item.isFree="{ item }">
+					<v-chip :color="item.isFree ? 'green' : 'red'">
+						{{ item.isFree ? "免费" : "付费" }}
+					</v-chip>
 				</template>
 				<template v-slot:item.star="{ item }">
 					<ClientOnly>
@@ -84,60 +105,93 @@
 						</template>
 					</ClientOnly>
 				</template>
+				<template v-slot:item.preview="{ item }">
+					<v-btn
+						class="text-lowercase"
+						color="primary"
+						variant="text"
+						:href="item.webSite"
+						target="_blank"
+					>
+						{{ item.webSite.split("://")[1] }}
+					</v-btn>
+				</template>
 			</v-data-table>
 		</v-card>
+		<v-snackbar v-model="snackbarVisible">
+			{{ snackbarText }}
+
+			<template v-slot:actions>
+				<v-btn
+					color="pink"
+					icon="mdi-close"
+					variant="text"
+					@click="snackbarVisible = false"
+				>
+				</v-btn>
+			</template>
+		</v-snackbar>
 	</div>
 </template>
 
 <script lang="ts" setup>
+import { copyText } from "../../utils/copyText";
+
 const expanded = ref([]);
 const search = ref("");
 
 type THeaders = {
-    title: string;
-    align?: 'start' | 'center' | 'end';
-    key: string;
-    sortable?: boolean;
-    width?: string;
+	title: string;
+	align?: "start" | "center" | "end";
+	key: string;
+	sortable?: boolean;
+	width?: string;
 };
 const headers: THeaders[] = [
-	{
-		title: "Prompt",
-		align: "start",
-		key: "prompt",
-	},
-	{ title: "Author", sortable: false, key: "author" },
-	{ title: "Publish", width: "120px", key: "publish" },
-	{ title: "HomePage", sortable: false, align: "center", key: "homepage" },
-	{ title: "Star", key: "star" },
-	{ title: "Preview", sortable: false, key: "video" },
+	{ title: "", sortable: false, align: "end", key: "logo" },
+	{ title: "标题", width: "120px", align: "start", key: "title" },
+	{ title: "标签", width: "200px", align: "start", key: "tags" },
+	{ title: "简介", sortable: false, key: "description" },
+	{ title: "作者", key: "author" },
+	{ title: "RSS地址", align: "center", sortable: false, key: "rss" },
+	{ title: "网站地址", width: "120px", key: "webSite" },
+	{ title: "是否付费", width: "130px", key: "isFree" },
+	{ title: "收藏", width: "90px", key: "star" },
+	// { title: "预览", sortable: false, key: "preview" },
 ];
 
 interface IListItem {
-	prompt: string;
+	logo: string;
+	title: string;
+	tags: string[];
 	author: string;
-	homepage: string;
-	video: string;
-	publish: string;
+	authorLink: string;
+	description: string;
+	rss: string;
+	webSite: string;
+	isFree: boolean;
 	star?: boolean;
 }
 
-interface ISoraData {
+interface IWeeklyData {
 	data: Ref<IListItem[]>;
 	pending: Ref<boolean>;
 }
 
-const { data: soraData, pending }: ISoraData = await useFetch("/api/sora", {
-	query: { search },
-});
-const { data: topWords } = await useFetch("/api/topWords");
+const { data: weeklyData, pending }: IWeeklyData = await useFetch(
+	"/api/weeklyData",
+	{
+		query: { search },
+	}
+);
+const { data: topTags } = await useFetch("/api/topTags");
 
 const store = useMyFavoritesListStore();
 const dataList = computed(() => {
-	const favoriteSet = new Set(store.favoritesList.map((item) => item.prompt));
-	return soraData?.value?.map((item) => ({
+	const favoriteSet = new Set(store.favoritesList.map((item) => item.webSite));
+	return weeklyData?.value?.map((item) => ({
 		...item,
-		star: favoriteSet.has(item.prompt),
+		star: favoriteSet.has(item.webSite),
 	}));
 });
 
@@ -149,9 +203,33 @@ function starItem(item: any) {
 	}
 }
 
+const snackbarVisible = ref(false);
+const snackbarText = ref("");
+function copy(text: string) {
+	copyText(text);
+	snackbarText.value = `RSS链接已复制到剪贴板`;
+	snackbarVisible.value = true;
+}
+
 function backToTop() {
 	window.scrollTo({ top: 0 });
 }
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.list-container {
+	min-width: 1115px;
+
+	.v-btn--size-default {
+		padding: 0 2px !important;
+	}
+
+	.three-line-ellipsis {
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+}
+</style>

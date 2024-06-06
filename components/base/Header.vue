@@ -8,16 +8,16 @@
 		>
 			<span class="text-h5 font-italic font-weight-thin d-flex align-center">
 				<SvgPoint style="height: 40px; width: 40px"></SvgPoint>
-				<span>Use Sora...</span>
+				<span>weekly0 - 优质周刊集合</span>
 			</span>
 			<span class="d-flex align-center">
 				<v-btn
 					class="text-capitalize mr-4"
 					color="primary"
 					variant="tonal"
-					href="https://github.com/Justin3go/usesora/blob/master/server/data/soraList.ts"
+					href="https://github.com/Justin3go/weekly0/blob/master/server/data/soraList.ts"
 					target="_blank"
-					>Submit</v-btn
+					>提交周刊</v-btn
 				>
 				<v-btn
 					icon="mdi-theme-light-dark"
@@ -27,7 +27,7 @@
 				<v-btn
 					icon="mdi-github"
 					variant="text"
-					href="https://github.com/Justin3go/usesora"
+					href="https://github.com/Justin3go/weekly0"
 					target="_blank"
 				></v-btn>
 			</span>
