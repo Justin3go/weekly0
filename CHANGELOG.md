@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/Justin3go/weekly0/compare/v1.0.0...v1.0.1) (2024-06-08)
+
+
+### Bug Fixes
+
+* 移动端显示不支持信息 ([774ddca](https://github.com/Justin3go/weekly0/commit/774ddca5a9c2125f39864eccb52ee3f7a4139047))
+
 ## 1.0.0 (2024-06-08)
 
 
