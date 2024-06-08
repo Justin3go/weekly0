@@ -32,7 +32,8 @@
 				:loading="pending"
 				:items-per-page="10"
 				:items-per-page-options="[5, 10, 20]"
-				item-value="description"
+				items-per-page-text="每页显示"
+				item-value="webSite"
 				loading-text="加载中... 请稍等"
 				@update:page="backToTop"
 			>
@@ -40,9 +41,11 @@
 					<v-avatar :image="item.logo" rounded="sm"></v-avatar>
 				</template>
 				<template v-slot:item.tags="{ item }">
-					<v-chip size="small" class="mr-1 mb-1" v-for="tag in item.tags">
-						{{ tag }}
-					</v-chip>
+					<div class="mt-1">
+						<v-chip size="small" class="mr-1 mb-1" v-for="tag in item.tags">
+							{{ tag }}
+						</v-chip>
+					</div>
 				</template>
 				<template v-slot:item.author="{ item }">
 					<v-btn
@@ -67,19 +70,11 @@
 						variant="text"
 						@click="copy(item.rss)"
 					>
-						点击复制
+						复制
 					</v-btn>
 				</template>
 				<template v-slot:item.webSite="{ item }">
-					<v-btn
-						class="text-lowercase"
-						color="primary"
-						variant="text"
-						:href="item.webSite"
-						target="_blank"
-					>
-						{{ item.webSite.match(/:\/\/(.[^/]+)/)[1].replace(/^(www\.)/, "") }}
-					</v-btn>
+					<HomeRead :webSite="item.webSite"></HomeRead>
 				</template>
 				<template v-slot:item.isFree="{ item }">
 					<v-chip :color="item.isFree ? 'green' : 'red'">
@@ -90,7 +85,7 @@
 					<ClientOnly>
 						<v-checkbox
 							v-model="item.star"
-							:messages="item.star ? 'starred' : 'star it'"
+							:messages="item.star ? '已收藏' : '收藏它'"
 							false-icon="mdi-star-plus-outline"
 							true-icon="mdi-star-check"
 							@update:modelValue="() => starItem(item)"
@@ -98,23 +93,12 @@
 						<template #placeholder>
 							<v-checkbox
 								:model-value="false"
-								messages="star it"
+								messages="收藏它"
 								false-icon="mdi-star-plus-outline"
 								true-icon="mdi-star-check"
 							></v-checkbox>
 						</template>
 					</ClientOnly>
-				</template>
-				<template v-slot:item.preview="{ item }">
-					<v-btn
-						class="text-lowercase"
-						color="primary"
-						variant="text"
-						:href="item.webSite"
-						target="_blank"
-					>
-						{{ item.webSite.split("://")[1] }}
-					</v-btn>
 				</template>
 			</v-data-table>
 		</v-card>
@@ -150,14 +134,19 @@ type THeaders = {
 const headers: THeaders[] = [
 	{ title: "", sortable: false, align: "end", key: "logo" },
 	{ title: "标题", width: "120px", align: "start", key: "title" },
-	{ title: "标签", width: "200px", align: "start", key: "tags" },
+	{
+		title: "标签",
+		width: "200px",
+		sortable: false,
+		align: "start",
+		key: "tags",
+	},
 	{ title: "简介", sortable: false, key: "description" },
 	{ title: "作者", key: "author" },
-	{ title: "RSS地址", align: "center", sortable: false, key: "rss" },
-	{ title: "网站地址", width: "120px", key: "webSite" },
+	{ title: "RSS",width: "60px", align: "center", sortable: false, key: "rss" },
+	{ title: "预览站点", width: "120px", key: "webSite" },
 	{ title: "是否付费", width: "130px", key: "isFree" },
 	{ title: "收藏", width: "90px", key: "star" },
-	// { title: "预览", sortable: false, key: "preview" },
 ];
 
 interface IListItem {
@@ -218,8 +207,6 @@ function backToTop() {
 
 <style lang="scss" scoped>
 .list-container {
-	min-width: 1115px;
-
 	.v-btn--size-default {
 		padding: 0 2px !important;
 	}

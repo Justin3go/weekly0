@@ -7,6 +7,7 @@ import { createVuetify } from 'vuetify'
 export default defineNuxtPlugin((app) => {
   const themeCookie = useCookie('theme')
   const vuetify = createVuetify({
+    ssr: true,
     theme: {
       defaultTheme: themeCookie.value || 'light',
     }

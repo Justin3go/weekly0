@@ -3,25 +3,32 @@
 		<span class="d-flex">
 			<v-btn
 				class="text-capitalize"
-				variant="text"
+				variant="plain"
 				href="https://github.com/Justin3go/usesora?tab=MIT-1-ov-file"
 				target="_blank"
-				>MIT License</v-btn
+				>MIT协议</v-btn
 			>
 			<v-btn
 				class="text-capitalize"
-				variant="text"
+				variant="plain"
 				href="mailto:just@justin3go.com?subject=Usesora%20Contract"
 				target="_blank"
-				>Contract Me</v-btn
+				>邮件联系</v-btn
+			>
+			<v-btn
+				class="text-capitalize"
+				variant="plain"
+				href="https://x.com/Justin1024go"
+				target="_blank"
+				>推特/X</v-btn
 			>
 		</span>
 		<v-btn
 			class="text-capitalize"
-			variant="text"
+			variant="plain"
 			append-icon="mdi-arrow-up"
 			@click="backToTop"
-			>Back To Top</v-btn
+			>回到顶部</v-btn
 		>
 	</div>
 </template>

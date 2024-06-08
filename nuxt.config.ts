@@ -4,12 +4,12 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 export default defineNuxtConfig({
   app: {
     head: {
-      title: 'UseSora',
+      title: 'Weekly0 - 优质周刊集合',
       link: [
-        { rel: 'icon', type: 'image/png', href: '/logo.png' }
+        { rel: 'icon', type: 'image/icon', href: '/favicon.ico' }
       ],
       meta: [
-        { name: 'description', content: 'Collecting the highest quality prompts for Sora, providing creators, researchers, and technology enthusiasts with a tool for sharing, exploring, and discovering the latest Sora video creations.' },
+        { name: 'description', content: '收刮中文互联网上的奇迹...' },
       ],
     }
   },
