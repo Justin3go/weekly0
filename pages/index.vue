@@ -23,10 +23,9 @@ const isMobileByUserAgent = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|
 useSeoMeta({
 	ogTitle: "weekly0 - 优质周刊集合",
 	ogDescription: `收刮中文互联网上的奇迹...`,
-	ogImage: "https://weekly0.com/cover.png'",
+	ogImage: "https://oss.justin3go.com/cover.png'",
 	twitterCard: "summary_large_image",
-	// @ts-ignore
-	twitterImageSrc: "https://weekly0.com/cover.png",
+	twitterImage: "https://oss.justin3go.com/cover.png",
 });
 </script>
 
