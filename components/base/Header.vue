@@ -15,7 +15,7 @@
 					class="text-capitalize mr-4"
 					color="primary"
 					variant="tonal"
-					href="https://github.com/Justin3go/weekly0/blob/master/server/data/soraList.ts"
+					href="https://github.com/Justin3go/weekly0/blob/master/SUBMIT.md"
 					target="_blank"
 					>提交周刊</v-btn
 				>

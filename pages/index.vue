@@ -16,6 +16,7 @@ useSeoMeta({
 	ogDescription: `收刮中文互联网上的奇迹...`,
 	ogImage: "https://weekly0.com/cover.png'",
 	twitterCard: "summary_large_image",
+	twitterImage: "https://weekly0.com/cover.png",
 });
 </script>
 

@@ -4,13 +4,6 @@
 			<v-btn
 				class="text-capitalize"
 				variant="plain"
-				href="https://github.com/Justin3go/usesora?tab=MIT-1-ov-file"
-				target="_blank"
-				>MIT协议</v-btn
-			>
-			<v-btn
-				class="text-capitalize"
-				variant="plain"
 				href="mailto:just@justin3go.com?subject=Usesora%20Contract"
 				target="_blank"
 				>邮件联系</v-btn
