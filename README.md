@@ -12,7 +12,7 @@
 
 收刮中文互联网上的奇迹...
 
-<img src="https://weekly0.com/cover.png" alt="cover" style="border-radius: 10px"/>
+<img src="https://weekly0.com/cover-2.png" alt="cover" style="border-radius: 10px"/>
 
 </div>
 
