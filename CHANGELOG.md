@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/Justin3go/weekly0/compare/v1.0.1...v1.1.0) (2024-07-14)
+
+
+### Features
+
+* 更新cover ([d02d13d](https://github.com/Justin3go/weekly0/commit/d02d13d5985ac8e4e9f6d0c4b13eaad02ad68883))
+
 ## [1.0.1](https://github.com/Justin3go/weekly0/compare/v1.0.0...v1.0.1) (2024-06-08)
 
 
