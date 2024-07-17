@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/Justin3go/weekly0/compare/v1.1.0...v1.2.0) (2024-07-17)
+
+
+### Features
+
+* 取消 iframe 预览直接跳转 ([39f8fd2](https://github.com/Justin3go/weekly0/commit/39f8fd2f7a22a808cb5de2a1cd61c4a8384bd5a6))
+
 ## [1.1.0](https://github.com/Justin3go/weekly0/compare/v1.0.1...v1.1.0) (2024-07-14)
 
 
