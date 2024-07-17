@@ -74,7 +74,17 @@
 					</v-btn>
 				</template>
 				<template v-slot:item.webSite="{ item }">
-					<HomeRead :webSite="item.webSite"></HomeRead>
+					<v-btn
+						color="primary"
+						class="text-lowercase"
+						variant="text"
+						:href="item.webSite"
+						target="_blank"
+					>
+						{{
+							item.webSite.match(/:\/\/(.[^/]+)/)?.[1].replace(/^(www\.)/, "")
+						}}
+					</v-btn>
 				</template>
 				<template v-slot:item.isFree="{ item }">
 					<v-chip :color="item.isFree ? 'green' : 'red'">
@@ -143,7 +153,7 @@ const headers: THeaders[] = [
 	},
 	{ title: "简介", sortable: false, key: "description" },
 	{ title: "作者", key: "author" },
-	{ title: "RSS",width: "60px", align: "center", sortable: false, key: "rss" },
+	{ title: "RSS", width: "60px", align: "center", sortable: false, key: "rss" },
 	{ title: "预览站点", width: "120px", key: "webSite" },
 	{ title: "是否付费", width: "130px", key: "isFree" },
 	{ title: "收藏", width: "90px", key: "star" },
