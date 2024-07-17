@@ -132,4 +132,26 @@ export const weeklyData = [
     webSite: 'https://toolight.zhubai.love/',
     isFree: true
   },
+  {
+    title: '大橘和朋友们的周刊',
+    author: 'Zhiyu',
+    authorLink: 'https://github.com/zhiyu1998',
+    logo: 'https://rrorangeandfriends.site/favicon.ico',
+    description: '《大橘和朋友们的周刊》： 分享日常冲浪互联网看到好玩的网站、app应用、资源分享、效率软件工具集等',
+    tags: ['互联网', '资源', '软件', '效率'],
+    rss: 'https://rrorangeandfriends.site/feed.xml',
+    webSite: 'https://rrorangeandfriends.site/',
+    isFree: true
+  },
+  // {
+  //   title: '',
+  //   author: '',
+  //   authorLink: '',
+  //   logo: '',
+  //   description: '',
+  //   tags: [],
+  //   rss: '',
+  //   webSite: '',
+  //   isFree: true
+  // },
 ]
