@@ -143,6 +143,85 @@ export const weeklyData = [
     webSite: 'https://rrorangeandfriends.site/',
     isFree: true
   },
+  {
+    "title": "老胡的周刊",
+    "author": "howie.hu",
+    "authorLink": "https://github.com/howie6879",
+    "logo": "https://weekly.howie6879.com/statics/images/favicon.ico",
+    "description": "老胡的信息周刊，为您带来各种值得收藏的软件项目以及资料网站 >>> 奇文共欣赏，疑义相与析",
+    "tags": ["独立开发", "软件推荐", "资源共享", "信息周刊", "编程"],
+    "rss": "https://weekly.howie6879.com/rss/rss.xml",
+    "webSite": "https://weekly.howie6879.com/",
+    "isFree": true
+  },
+  {
+    "title": "学习周刊",
+    "author": "二丫讲梵",
+    "authorLink": "https://github.com/eryajf",
+    "logo": "https://wiki.eryajf.net/img/favicon.ico",
+    "description": "学习周刊",
+    "tags": ["独立开发", "运维", "Go语言", "Vue", "GitHub"],
+    "rss": "https://wiki.eryajf.net/rss.xml",
+    "webSite": "https://wiki.eryajf.net/",
+    "isFree": true
+  },
+  {
+    "title": "奇趣周刊",
+    "author": "子舒",
+    "authorLink": "https://zishu.me/",
+    "logo": "https://imgurl.zishu.me/favicon.ico",
+    "description": "奇趣周刊，每周四发布，分享有趣的软件，程序，动态新闻等",
+    "tags": ["独立开发", "软件推荐", "动态新闻", "编程"],
+    "rss": "https://zishu.me/categories/weekly/index.xml",
+    "webSite": "https://zishu.me/categories/weekly/",
+    "isFree": true
+  },
+  {
+    "title": "龙爪槐守望者",
+    "author": "龙爪槐守望者",
+    "authorLink": "https://twitter.com/ftium4",
+    "logo": "https://pic.ftium4.com/mylogo2022.png",
+    "description": "一个帮助交互设计师成长的互联网传说。做任何事情都只是因为兴趣罢了",
+    "tags": ["交互设计", "体验碎周报", "设计师口袋心理学", "用户体验", "独立开发"],
+    "rss": "https://www.ftium4.com/rss.xml",
+    "webSite": "https://www.ftium4.com/",
+    "isFree": true
+  },
+  {
+    "title": "Pseudoyu",
+    "author": "Yu Zhang",
+    "authorLink": "https://github.com/pseudoyu",
+    "logo": "https://www.pseudoyu.com/images/icon.png",
+    "description": "Blockchain | Programming | Photography | Boyi",
+    "tags": ["区块链", "编程", "摄影", "独立开发"],
+    "rss": "https://www.pseudoyu.com/zh/index.xml",
+    "webSite": "https://www.pseudoyu.com/zh/",
+    "isFree": true
+  },
+  {
+    "title": "Raye's Journey",
+    "author": "Raye Peng",
+    "authorLink": "https://twitter.com/rayepeng_",
+    "logo": "https://ipfs.crossbell.io/ipfs/bafkreic47myqprc4sqdlukgssj537gdq2uvegstu7etkm6m5ifa2jwc4ra",
+    "description": "且趁闲身未老，尽放我、些子疏狂。",
+    "tags": ["blockchain", "crypto", "web3", "dapp", "blog"],
+    "rss": "https://rayepeng.net/feed",
+    "webSite": "https://rayepeng.net",
+    "isFree": true
+  },
+  {
+    "title": "Markon Review",
+    "author": "Vistaing",
+    "authorLink": "https://markonreview.com/author/vistaing/",
+    "logo": "https://markonreview.com/content/images/2017/09/newlogo-1.png",
+    "description": "游戏评论、资讯，来自一小撮爱玩游戏的玩家",
+    "tags": ["游戏评论", "游戏资讯", "独立开发", "PlayStation", "硬件"],
+    "rss": "https://markonreview.com/rss/",
+    "webSite": "https://markonreview.com/",
+    "isFree": true
+  },
+
+
   // {
   //   title: '',
   //   author: '',
