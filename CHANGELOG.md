@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/Justin3go/weekly0/compare/v1.2.0...v1.3.0) (2024-09-13)
+
+
+### Features
+
+* update weekly data ([6cfc9b3](https://github.com/Justin3go/weekly0/commit/6cfc9b3a32102f04e5f4d32a45b464e67ac98c55))
+
 ## [1.2.0](https://github.com/Justin3go/weekly0/compare/v1.1.0...v1.2.0) (2024-07-17)
 
 
